@@ -10,14 +10,34 @@
 
     function route(request, response) {
         var pathName = url.parse(request.url).pathname;
-        _handle(pathName, response);
+        _handle(pathName, request, response);
     }
 
-    function _handle(pathName, response) {
-        var path = path.join(configuration.rootApp, pathName);
-        var viewPath = path.join(process.cwd(),path);
+    function _handle(pathName, request, response) {
+        var pathView = path.join(configuration.rootApp, pathName);
+        var viewPath = path.join(process.cwd(),pathView);
 
-        consolew.log(viewPath);
+        fs.readFile(viewPath, 'utf8', function(err,data) {
+            if(err) {
+                _serveNotFoundPage(viewPath, response);
+            } else {
+                _servePage(data, response);
+            }
+        });
+    }
+
+    function _serveNotFoundPage(pagePath, response) {
+        if(!response.finished) {
+            response.writeHead(404,{'Content-Type':'text/html'});
+            response.end('Path '+pagePath+' was not found!');
+        }
+    }
+
+    function _servePage(data, response) {
+        if(!response.finished) {
+            response.writeHead(200, {'Content-Type': 'text/html'});
+            response.end(data);
+        }
     }
 
 

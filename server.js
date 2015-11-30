@@ -17,21 +17,26 @@
     function handleRequest(request, response) {
         var isCss = request.url.indexOf('.css') !== -1;
         var isJs = request.url.indexOf('.js') !== -1;
+        var isHttpController = request.url.indexOf('/resh/controller') !== -1;
 
         if(isCss) {
-            //handling['css'].route(request,response);
+            routeHandler['isCss'].route(request, response);
         } else if(isJs) {
-            //handling['js'].route(request, response);
+            routeHandler['isJs'].route(request, response);
+        } else if(isHttpController) {
+            routeHandler['isHttpController'].route(request, response);
         } else {
-            //handling['resources'].route(request, response);
-            routehandler['isView'].route(request,response);
+            routeHandler['isView'].route(request,response);
         }
     }
 
     start();
 
     var routeHandler = {
-        'isView': require('./handlers/viewHandler')
+        'isView': require('./handlers/viewHandler'),
+        'isJs': require('./handlers/jsHandler'),
+        'isCss' : require('./handlers/cssHandler'),
+        'isHttpController' : require('./controller/reshHttpController')
     }
 
 })();

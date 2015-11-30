@@ -1,5 +1,8 @@
 {
-  "rootApp": "",
+  "rootApp": "../photogallery/src/main",
+  "bowerComponentsRoot":"../photogallery",
+  "clientJs":"../photogallery/src",
+  "httpControllerPath":"/resh/controller",
   "dev": {
     "host":"127.0.0.1",
     "port":"8081"
