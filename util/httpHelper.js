@@ -18,13 +18,12 @@ function post(hostname, port, path, headers, body) {
 function _request(method, hostname, port, path, headers, body) {
     var requestDescription;
     if(port == null) {
-        console.log('port is null');
         requestDescription = method + ' ' + hostname + path;
     } else {
         console.log(port);
         requestDescription = method + ' ' + hostname + ':' + port + path;
     }
-    console.log(requestDescription);
+    console.log('Making request '+requestDescription);
     var deferred = defer();
 
     var options = {

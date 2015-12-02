@@ -11,8 +11,8 @@ function route(request, response) {
 }
 
 function _doGet(request, response) {
-    console.log('Get method called');
-    httpHelper.get('api.flickr.com',null,'/services/feeds/photos_public.gne?tags=potato&tagmode=all&format=json')
+    var port = request.headers.port == 'null' ? null : request.headers.port;
+    httpHelper.get(request.headers.hostname,port,request.headers.path)
         .then(function(data) {
             _successResponse(data.data,response);
         }, function(error) {
