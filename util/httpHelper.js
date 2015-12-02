@@ -34,7 +34,6 @@ function _request(method, hostname, port, path, headers, body) {
         headers: headers
     };
 
-    //local hack don't understand the meaning of this
     var isResolved = false;
     var request = http.request(options, function (res) {
         var chunk = '';

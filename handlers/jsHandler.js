@@ -14,7 +14,7 @@ function route(request, response) {
 function _handle(pathName, request, response) {
     var pathView;
     if(request.url.indexOf('/bower_components') != -1) {
-        pathView = path.join(configuration.bowerComponentsRoot, pathName);
+        pathView = path.join(configuration.rootApp, pathName);
     } else if(request.url.indexOf('/config') != -1) {
         pathView = path.join(configuration.rootApp, pathName);
     } else {
