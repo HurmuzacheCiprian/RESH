@@ -16,7 +16,6 @@ function _doGet(request, response) {
         .then(function(data) {
             _successResponse(data.data,response);
         }, function(error) {
-            console.log('HEREEEEE');
             _errorResponse(error, response);
         });
 }
