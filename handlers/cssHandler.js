@@ -12,7 +12,7 @@ function route(request, response) {
 }
 
 function _handle(pathName, request, response) {
-    var pathView  = path.join(configuration.rootApp, pathName);
+    var pathView  = path.join(configuration.bowerComponentsRoot, pathName);
     var viewPath = path.join(process.cwd(),pathView);
 
     fs.readFile(viewPath, 'utf8', function(err,data) {

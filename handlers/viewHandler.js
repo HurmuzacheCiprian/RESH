@@ -5,7 +5,7 @@
     var fs = require('fs'),
         path = require('path'),
         url = require('url'),
-        configResolver = require('../util/configResolver');
+        configuration = require('../configuration.json');
 
 
     function route(request, response) {
@@ -14,20 +14,16 @@
     }
 
     function _handle(pathName, request, response) {
-        //var pathView = path.join(configuration.rootApp, pathName);
-        //var viewPath = path.join(process.cwd(),pathView);
-        configResolver.resolve(pathName).then(function(data){
-            console.log('Received data:'+data);
-        }, function(error) {
-            console.log(error);
+        var pathView = path.join(configuration.rootApp, pathName);
+        var viewPath = path.join(process.cwd(),pathView);
+
+        fs.readFile(viewPath, 'utf8', function(err,data) {
+            if(err) {
+                _serveNotFoundPage(viewPath, response);
+            } else {
+                _servePage(data, response);
+            }
         });
-        //fs.readFile(viewPath, 'utf8', function(err,data) {
-        //    if(err) {
-        //        _serveNotFoundPage(viewPath, response);
-        //    } else {
-        //        _servePage(data, response);
-        //    }
-        //});
     }
 
     function _serveNotFoundPage(pagePath, response) {

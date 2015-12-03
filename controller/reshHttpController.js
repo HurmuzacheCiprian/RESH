@@ -16,6 +16,7 @@ function _doGet(request, response) {
         .then(function(data) {
             _successResponse(data.data,response);
         }, function(error) {
+            console.log('HEREEEEE');
             _errorResponse(error, response);
         });
 }
@@ -30,7 +31,7 @@ function _successResponse(data, response) {
 function _errorResponse(error, response) {
     if(!response.finished) {
         response.writeHead(500,{'Content-Type':'application/json'});
-        response.end(Json.stringify({'error':'error'}));
+        response.end(JSON.stringify({'error':'error'}));
     }
 }
 

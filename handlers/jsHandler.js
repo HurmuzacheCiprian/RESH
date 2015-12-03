@@ -14,11 +14,11 @@ function route(request, response) {
 function _handle(pathName, request, response) {
     var pathView;
     if(request.url.indexOf('/bower_components') != -1) {
-        pathView = path.join(configuration.rootApp, pathName);
+        pathView = path.join(configuration.bowerComponentsRoot, pathName);
     } else if(request.url.indexOf('/config') != -1) {
         pathView = path.join(configuration.rootApp, pathName);
     } else {
-        pathView = path.join(configuration.clientJs, pathName);
+        pathView = path.join(configuration.rootApp, pathName);
     }
     var viewPath = path.join(process.cwd(),pathView);
 
