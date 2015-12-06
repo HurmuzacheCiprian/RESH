@@ -18,6 +18,7 @@
         var isCss = request.url.indexOf('.css') !== -1;
         var isJs = request.url.indexOf('.js') !== -1;
         var isHttpController = request.url.indexOf('/resh/controller') !== -1;
+        var isResource = request.url.indexOf('/resources') !=-1;
 
         if(isCss) {
             routeHandler['isCss'].route(request, response);
@@ -25,6 +26,8 @@
             routeHandler['isJs'].route(request, response);
         } else if(isHttpController) {
             routeHandler['isHttpController'].route(request, response);
+        } else if(isResource){
+            routeHandler['isResource'].route(request,response);
         } else {
             routeHandler['isView'].route(request,response);
         }
@@ -36,6 +39,7 @@
         'isView': require('./handlers/viewHandler'),
         'isJs': require('./handlers/jsHandler'),
         'isCss' : require('./handlers/cssHandler'),
+        'isResource': require('./handlers/resourceHandler'),
         'isHttpController' : require('./controller/reshHttpController')
     }
 

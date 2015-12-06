@@ -1,14 +1,22 @@
 {
-  "rootApp": "../photogallery/src/main",
-  "bowerComponentsRoot":"../photogallery",
-  "clientJs":"../photogallery/src",
+  "rootApp": "../SMF/main",
+  "bowerComponentsRoot":"../SMF",
+  "clientJs":"../SMF/main",
+  "resourcesRoot":"../SMF/main",
   "httpControllerPath":"/resh/controller",
-  "dev": {
-    "host":"127.0.0.1",
-    "port":"8081"
-  },
-  "openshift": {
-    "host":"",
-    "port":""
+
+  "environments": {
+    "dev": {
+      "host": "127.0.0.1",
+      "port": "8081"
+    },
+    "openshift": {
+      "host": "",
+      "port": ""
+    },
+    "prod": {
+      "host":"",
+      "port":""
+    }
   }
 }
