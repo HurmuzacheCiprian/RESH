@@ -1,10 +1,9 @@
 {
   "rootApp": "../SMF/main",
-  "bowerComponentsRoot":"../SMF",
-  "clientJs":"../SMF/main",
-  "resourcesRoot":"../SMF/main",
-  "httpControllerPath":"/resh/controller",
-
+  "bowerComponentsRoot": "../SMF",
+  "clientJs": "../SMF/main",
+  "resourcesRoot": "../SMF/main",
+  "httpControllerPath": "/resh/controller",
   "environments": {
     "dev": {
       "host": "127.0.0.1",
@@ -15,8 +14,8 @@
       "port": ""
     },
     "prod": {
-      "host":"",
-      "port":""
+      "host": "",
+      "port": ""
     }
   }
 }

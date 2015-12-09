@@ -35,6 +35,7 @@ function _doPost(request, response) {
     request.on("end", function () {
         httpHelper.post(request.headers.hostname, port, request.headers.path, headers, JSON.parse(body))
             .then(function (data) {
+                request.authorization = JSON.parse(body).userName;
                 _successResponse(data.data, response);
             }, function (error) {
                 _errorResponse(error, response);
